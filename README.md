@@ -187,7 +187,14 @@ abbreviations.
     [RailsCast on the subject](http://railscasts.com/episodes/326-activeattr).
 
 * Create concerns for related functionality within a model.
-* Scopes use them.
+* Scopes use them.  Try to keep SQL localized to the models.
+
+### Classes
+
+* Documentation needs to accompany the class.  What is it for, how it
+  works, etc
+  # TODO - need more stuff here re:documentation.  What it should look
+like, etc
 
 ### ActiveRecord
 
