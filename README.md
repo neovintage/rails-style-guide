@@ -48,6 +48,8 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Create an additional `staging` environment that closely resembles
 the `production` one.
+* If any configure is specific by environment, it should go into the config/environment/* files
+* If its a constant and doesnt need to be global it should go into a model or module
 
 ## Routing
 
@@ -128,15 +130,32 @@ the `production` one.
     # very bad
     match ':controller(/:action(/:id(.:format)))'
     ```
+* Never use match.  Use an http verb instead.
+
+   # example needed
+
 
 ## Controllers
 
 * Keep the controllers skinny - they should only retrieve data for the
   view layer and shouldn't contain any business logic (all the
   business logic should naturally reside in the model).
-* Each controller action should (ideally) invoke only one method other
+* Each controller action should (ideally) invoke only one or two methods other
   than an initial find or new.
 * Share no more than two instance variables between a controller and a view.
+  Consider creating a ViewModel if you need many instance variables.
+
+  ###
+    # TODO - Show an example of how to create a View Model from our code
+    @offer_view = BuyerOfferShowView.new(@buyer)
+
+    app/view_models/buyer_offer_view.rb
+  ###
+
+## View Models
+
+   # TODO - Need some rules.  Exploring still.  Consider Backbone.js as
+     example.
 
 ## Models
 
@@ -166,6 +185,9 @@ abbreviations.
 
     For a more complete example refer to the
     [RailsCast on the subject](http://railscasts.com/episodes/326-activeattr).
+
+* Create concerns for related functionality within a model.
+* Scopes use them.
 
 ### ActiveRecord
 
